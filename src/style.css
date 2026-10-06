@@ -1,0 +1,192 @@
+:root {
+  color-scheme: dark;
+  --ink: #1a1714;
+  --cream: #f6f1e3;
+  --green: #1c3d32;
+  --accent: #e4b15c;
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #000;
+  color: var(--cream);
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, input { font: inherit; }
+
+[hidden] { display: none !important; }
+
+.stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.stage video,
+.stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: 50% 50%;
+}
+
+.stage canvas { touch-action: none; cursor: grab; }
+
+.view-1 { filter: grayscale(1) contrast(1.9); }
+.view-2 { filter: grayscale(1) contrast(1.9) invert(1); }
+
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: calc(env(safe-area-inset-top) + 0.6rem) 1rem 1.2rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  z-index: 3;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+}
+
+.pill {
+  min-height: 2.75rem;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  border: 2px solid var(--cream);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--cream);
+  cursor: pointer;
+}
+
+.panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.9rem 1rem calc(env(safe-area-inset-bottom) + 1rem);
+  background: rgba(16, 20, 18, 0.82);
+  z-index: 3;
+}
+
+.zoomrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.zname { font-weight: 700; flex-shrink: 0; }
+.zval {
+  flex-shrink: 0;
+  min-width: 3.4rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.slider {
+  flex: 1;
+  height: 3rem;
+  accent-color: var(--accent);
+  background: transparent;
+  cursor: pointer;
+}
+.slider::-webkit-slider-runnable-track { height: 0.5rem; border-radius: 1rem; background: rgba(246, 241, 227, 0.35); }
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-top: -0.85rem;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--cream);
+}
+.slider { -webkit-appearance: none; appearance: none; }
+.slider::-moz-range-track { height: 0.5rem; border-radius: 1rem; background: rgba(246, 241, 227, 0.35); }
+.slider::-moz-range-thumb { width: 2rem; height: 2rem; border-radius: 50%; background: var(--accent); border: 3px solid var(--cream); }
+
+.hint {
+  margin: 0.2rem auto 0;
+  max-width: 40rem;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.6rem;
+  max-width: 40rem;
+  margin: 0.6rem auto 0;
+}
+
+.big {
+  flex: 1;
+  min-height: 3.6rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.9rem;
+  border: 2px solid var(--cream);
+  background: transparent;
+  color: var(--cream);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.big.primary { background: var(--cream); color: var(--ink); }
+.big.on { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+.big:active { transform: scale(0.98); }
+
+.cover {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 2rem 1.5rem;
+  background: var(--cream);
+  color: var(--ink);
+  text-align: center;
+}
+
+.cover-title { margin: 0; font-size: 2.2rem; letter-spacing: 0.05em; }
+.cover-lead { margin: 0; font-size: 1.15rem; }
+.cover-msg { margin: 0; max-width: 26rem; font-size: 1.05rem; line-height: 1.7; }
+.cover-note { margin: 0.4rem 0 0; max-width: 24rem; font-size: 0.9rem; color: #5c564c; }
+
+.cover .start {
+  flex: none;
+  width: min(100%, 20rem);
+  min-height: 4rem;
+  margin-top: 0.6rem;
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--cream);
+  font-size: 1.3rem;
+}
+
+.top.light { background: none; justify-content: flex-end; }
+.top.light .pill { border-color: var(--ink); color: var(--ink); background: transparent; }
