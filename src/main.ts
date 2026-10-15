@@ -1,4 +1,5 @@
 import './style.css'
+import { bigTextButton } from './bigtext'
 import { askPersist, load, save } from './db'
 import { dict, type Dict, type Lang } from './i18n'
 
@@ -61,7 +62,9 @@ const top = el('header', 'top')
 const title = el('h1', 'title')
 const langBtn = el('button', 'pill lang')
 langBtn.type = 'button'
-top.append(title, langBtn)
+const tools = el('div', 'top-tools')
+tools.append(bigTextButton(), langBtn)
+top.append(title, tools)
 
 const panel = el('div', 'panel')
 panel.hidden = true

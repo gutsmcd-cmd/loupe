@@ -191,6 +191,18 @@ button, input { font: inherit; }
 .top.light { background: none; justify-content: flex-end; }
 .top.light .pill { border-color: var(--ink); color: var(--ink); background: transparent; }
 
-/* Shirley check (Oct 2026): larger small print and 48px tap targets. */
+/* Shirley check (Oct 2026): 48px tap targets. Bigger text is opt-in via 大きい文字 (html.big-text). */
 .pill { min-height: 3rem; }
-.cover-note, .hint { font-size: 1rem; }
+.top-tools { display: flex; align-items: center; gap: 0.5rem; margin-left: auto; }
+.big-text-btn {
+  min-width: 3rem; min-height: 3rem; padding: 0 0.5rem; border-radius: 999px;
+  border: 2px solid var(--cream); background: rgba(0, 0, 0, 0.35); color: var(--cream);
+  display: inline-flex; align-items: center; justify-content: center; gap: 1px; font-weight: 800; line-height: 1; cursor: pointer;
+}
+.big-text-btn .bt-s { font-size: 12px; margin-top: 5px; }
+.big-text-btn .bt-l { font-size: 19px; }
+.big-text-btn[aria-pressed='true'] { background: var(--cream); color: var(--ink); }
+.top.light .big-text-btn { border-color: var(--ink); color: var(--ink); background: transparent; }
+.top.light .big-text-btn[aria-pressed='true'] { background: var(--ink); color: var(--cream); }
+html.big-text { font-size: 112.5%; }
+html.big-text .cover-note, html.big-text .hint { font-size: 1rem; }
